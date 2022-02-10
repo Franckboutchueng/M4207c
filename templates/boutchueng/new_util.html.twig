@@ -1,29 +1,9 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello NewsUsers{% endblock %}
-<form method="post" action="new_util">
 
+{% for un_utilisateur in lst_utilisateurs %}
 
-{% block body %}
-<div class="container">
-<p><h1>Veuillez remplir le formulaire</h1></p>
+On utilise {{ un_utilisateur.Nom }} pour afficher le champ Nom de un_utilisateur, …
 
-<form method="post" action="new_util">
-<div class="form-group">
-<label>Entrer votre pseudo</label> :
+{% endfor %}
 
-<input type="text" class="form-control" name="username" id="New_users" placeholder="Ex : Toto" size="30" maxlength="20"/>
-
-</div>
-<div class="form-group">
-<label for="pass">Entrer votre mot de passe :</label>
-<input type="password" class="form-control" name="pass" id="pass"  placeholder="Ex : +1ùpol;kvF" size="30" maxlength="20"/>
-<BR/>
-<input type="submit" class="btn btn-primary" value="Envoyer" />
-</div>
-   
-</form>
-</div>
-
-
-{% endblock %}
