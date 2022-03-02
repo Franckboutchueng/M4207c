@@ -50,27 +50,36 @@ class BoutchuengController extends AbstractController
             'loginV' =>$pseudoV,
         ]);
     }
+
+      /**
+     * @Route("/New_users1", name="New_users1")
+     */ 
+    public function New_users1(Request $request,  EntityManagerInterface $manager): Response
+    {
+
+
+        return $this->render('boutchueng/New_users1.html.twig', [
+            'controller_name' => 'BoutchuengController',
+           
+        ]);
+    }
+
       /**
      * @Route("/New_users", name="New_users")
      */ 
-    public function New_users(Request $request,  EntityManagerInterface $manager): Response
+    public function New_users(Request $request,   EntityManagerInterface $manager): Response
     {
-        $Login= $request -> request -> get("New_users");
+        $Login= $request -> request -> get("username");
         $password= $request -> request ->get("pass");
         $monUtilisateur = new Utilisateur ();
         $monUtilisateur -> setLogin($Login);
-        $nomUtilisateur-> setPassword($password);
+        $monUtilisateur-> setPassword($password);
         $manager -> persist($monUtilisateur);
         $manager -> flush ();
 
 
 
-        return $this->redirectToRoute('boutchueng/new_util.html.twig', [
-            'controller_name' => 'BoutchuengController',
-            'New_users'=>$Login,
-            'pass'=>$password,
-           
-        ]);
+        return $this->redirectToRoute('New_users1');
     }
      
     
